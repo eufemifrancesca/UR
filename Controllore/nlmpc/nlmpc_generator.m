@@ -37,23 +37,24 @@ nloptions.Parameters = {Ts};
 validateFcns(nlobj,x0,u0');
 
 %Closed-loop simulation
+x = [0 0 0 0];
 Duration = 50;
 xHistory = x;
-x = [0 0 0 0];
 
-for i = 1:(Duration/Ts)
-    %Compute optimal control moves
-    [mv,nloptions] = nlmpcmove(nlobj,x,mv,yref,[],nloptions);
-    %Implement optimal control move
-    
-    %Output generator
-    y = [x(3) x(4)];
-    %State savings
-    xHistory = [xHistory x];
-end
 
-plot(Duration, xHistory(1,:),'b')
-plot(Duration, xHistory(2,:),'r')
+% for i = 1:(Duration/Ts)
+%     %Compute optimal control moves
+%     [mv,nloptions] = nlmpcmove(nlobj,x,mv,yref,[],nloptions);
+%     %Implement optimal control move
+%     
+%     %Output generator
+%     y = [x(3) x(4)];
+%     %State savings
+%     xHistory = [xHistory x];
+% end
+% 
+% plot(Duration, xHistory(1,:),'b')
+% plot(Duration, xHistory(2,:),'r')
 
 
 
